@@ -52,8 +52,8 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(disposable);
 }
 
-function toPascalCase(str: string) {
-    return str.replace(/\w+/g, w => w[0].toUpperCase() + w.slice(1).toLowerCase());
+function toCamelCase(str: string) {
+    return str.replace(/\w+/g, w => w[0].toUpperCase() + w.slice(1));
 }
 
 function createGetterAndSetter(textPorperties: string) {
@@ -73,7 +73,7 @@ function createGetterAndSetter(textPorperties: string) {
         if (words.length === 3) {
             type = words[2];
             attribute = words[1];
-            Attribute = toPascalCase(words[1]);
+            Attribute = toCamelCase(words[1]);
 
             create = true;
             // if words !== ["private", "name:", "string"];

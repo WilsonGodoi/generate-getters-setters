@@ -2,8 +2,8 @@
     "name": "wg-getters-and-setters",
     "displayName": "Generate getters and setters",
     "description": "Automatic generate getters and setters",
-    "version": "1.0.0",
-    "publisher": "Wilson Godoi",
+    "version": "1.0.1",
+    "publisher": "Wilson",
     "engines": {
         "vscode": "^1.25.0"
     },
