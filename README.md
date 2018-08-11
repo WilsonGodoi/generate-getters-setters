@@ -2,6 +2,8 @@
 
 Generate getters and setters for your Typescript class properties.
 
+![Demo](images/demo.gif)
+
 ## Features
 
 This extension allows you to quickly generate getters and setters with one single command.
@@ -14,6 +16,8 @@ Generates method's descriptions based on the property description.
 Add 1 comand to vscode's command palette:
 
 Insert Generate Getters and Setters.
+
+![Contexttual menu](images/example.png)
 
 ## Release Notes
 

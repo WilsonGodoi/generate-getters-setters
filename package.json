@@ -2,8 +2,17 @@
     "name": "wg-getters-and-setters",
     "displayName": "Generate getters and setters",
     "description": "Automatic generate getters and setters",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "publisher": "Wilson",
+    "author": "Wilson Godoi <wilsonggodoi@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/WilsonGodoi/generate-getters-setters"
+    },
+    "bugs": {
+        "url": "https://github.com/WilsonGodoi/generate-getters-setters/issues"
+    },
+    "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.25.0"
     },
