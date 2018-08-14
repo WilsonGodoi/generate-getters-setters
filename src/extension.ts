@@ -26,7 +26,6 @@ export function activate(context: vscode.ExtensionContext) {
 
         if (text.length < 1) {
             vscode.window.showErrorMessage('No selected properties.');
-            vscode.window.showErrorMessage('Nenhuma propriedade foi selecionada!');
             return;
         }
 
@@ -44,8 +43,6 @@ export function activate(context: vscode.ExtensionContext) {
         catch (error) {
             console.log(error);
             vscode.window.showErrorMessage('Something went wrong! Try that the properties are in this format: "private String name;"');
-            vscode.window.showErrorMessage('Algo saiu errado! Tente declarar as propriedades no formato: "private name: string;"');
-
         }
     });
 
@@ -79,7 +76,6 @@ function createGetterAndSetter(textPorperties: string) {
             // if words !== ["private", "name:", "string"];
         } else {
             vscode.window.showErrorMessage('Something went wrong! Try that the properties are in this format: "private name: string;"');
-            vscode.window.showErrorMessage('Algo saiu errado! Tente declarar as propriedades no formato: "private name: string;"');
             generatedCode = ``;
             break;
         }
