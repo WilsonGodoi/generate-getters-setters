@@ -58,15 +58,18 @@ function createGetterAndSetter(textPorperties: string) {
 
     let generatedCode = `
 `;
-    for (let p of properties) {
-        while (p.startsWith(" ")) { p = p.substr(1); }
-        while (p.startsWith("\t")) { p = p.substr(1); }
+    for (let p in properties) {
+        while (properties[p].startsWith(" ")) { properties[p] = properties[p].substr(1); }
+        while (properties[p].startsWith("\t")) { properties[p] = properties[p].substr(1); }
+        if (properties[p].trim() === "") {
+            properties.splice(parseInt(p), 1)
+        }
 
-        let words = p.split(" ").map(x => x.replace('\r\n', ''));
+        let words = properties[p].split(" ").map(x => x.replace('\r\n', ''));
         let type, attribute, Attribute = "";
         let create = false;
 
-        // if words === ["private", "name:", "string"];
+        // if words === ["private", "name:", "string"];u
         if (words.length === 3) {
             type = words[2];
             attribute = words[1];

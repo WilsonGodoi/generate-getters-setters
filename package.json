@@ -2,7 +2,7 @@
     "name": "wg-getters-and-setters",
     "displayName": "TypeScript's Getters and Setters Object Oriented Programming Style",
     "description": "Automatic generate getters and setters",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "publisher": "Wilson-Godoi",
     "author": "Wilson Godoi <wilsonggodoi@gmail.com>",
     "repository": {
