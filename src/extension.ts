@@ -54,16 +54,20 @@ function toCamelCase(str: string) {
 }
 
 function createGetterAndSetter(textPorperties: string) {
-    let properties = textPorperties.split('\n').map(x => x.replace(':', '')).map(x => x.replace(';', ''));
+    let teste = textPorperties.split('\n').map(x => x.replace(':', '')).map(x => x.replace(';', ''));
+    let properties: Array<string> = [];
+
+    for (let p of teste) {
+        if (p.trim() !== "") {
+            properties.push(p);
+        }
+    }
 
     let generatedCode = `
-`;
+    `;
     for (let p in properties) {
         while (properties[p].startsWith(" ")) { properties[p] = properties[p].substr(1); }
         while (properties[p].startsWith("\t")) { properties[p] = properties[p].substr(1); }
-        if (properties[p].trim() === "") {
-            properties.splice(parseInt(p), 1)
-        }
 
         let words = properties[p].split(" ").map(x => x.replace('\r\n', ''));
         let type, attribute, Attribute = "";
