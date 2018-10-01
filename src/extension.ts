@@ -53,13 +53,13 @@ function toCamelCase(str: string) {
     return str.replace(/\w+/g, w => w[0].toUpperCase() + w.slice(1));
 }
 
-function createGetterAndSetter(textPorperties: string) {
-    let teste = textPorperties.split('\n').map(x => x.replace(':', '')).map(x => x.replace(';', ''));
+function createGetterAndSetter(textProperties: string) {
+    let rows = textProperties.split('\n').map(x => x.replace(';', ''));
     let properties: Array<string> = [];
 
-    for (let p of teste) {
-        if (p.trim() !== "") {
-            properties.push(p);
+    for (let row of rows) {
+        if (row.trim() !== "") {
+            properties.push(row);
         }
     }
 
@@ -68,19 +68,45 @@ function createGetterAndSetter(textPorperties: string) {
     for (let p in properties) {
         while (properties[p].startsWith(" ")) { properties[p] = properties[p].substr(1); }
         while (properties[p].startsWith("\t")) { properties[p] = properties[p].substr(1); }
+        let words: Array<string> = [];
 
-        let words = properties[p].split(" ").map(x => x.replace('\r\n', ''));
+        let rows = properties[p].split(" ").map(x => x.replace('\r\n', ''));
+        for (let row of rows) {
+            if (row.trim() !== '') {
+                words.push(row);
+            }
+        }
         let type, attribute, Attribute = "";
         let create = false;
 
-        // if words === ["private", "name:", "string"];u
+        // if words === ["private", "name:", "string"];
         if (words.length === 3) {
+            let attributeArray = words[1].split(":");
             type = words[2];
-            attribute = words[1];
-            Attribute = toCamelCase(words[1]);
+            attribute = attributeArray[0];
+            Attribute = toCamelCase(attribute);
 
             create = true;
-            // if words !== ["private", "name:", "string"];
+            // if words === ["private", "name:string"];
+        } else if (words.length === 2) {
+            let array = words[1].split(":");
+            type = array[1];
+            attribute = array[0];
+            Attribute = toCamelCase(attribute);
+            create = true;
+            // if words === ["private", "name", ":", "string"];
+        } else if (words.length === 4) {
+
+            let array: Array<string> = [];
+            for (let word of words) {
+                if (word !== ':') {
+                    array.push(word);
+                }
+            }
+            type = array[2].trim();
+            attribute = array[1];
+            Attribute = toCamelCase(attribute);
+            create = true;
         } else {
             vscode.window.showErrorMessage('Something went wrong! Try that the properties are in this format: "private name: string;"');
             generatedCode = ``;
