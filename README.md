@@ -23,6 +23,10 @@ Insert Generate Getters and Setters.
 
 Relevant releases:
 
+### 1.1.0
+
+Generate getters and setters even without indentation and in all sorts of selection.
+
 ### 1.0.1
 
 Fixed camel case problems.

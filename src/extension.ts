@@ -21,8 +21,26 @@ export function activate(context: vscode.ExtensionContext) {
         if (!editor) {
             return;
         }
-        let selection = editor.selection;
-        let text = editor.document.getText(selection);
+        let code = ``;
+        let reverse: boolean = false;
+
+        for (let selection of editor.selections) {
+            reverse = selection.isReversed;
+        }
+
+        let selections: vscode.Selection[];
+        if (reverse) {
+            selections = editor.selections.reverse();
+        } else {
+            selections = editor.selections;
+        }
+
+        for (let selection of selections) {
+            code += editor.document.getText(selection);
+            code += `\n`;
+        }
+
+        let text = code;
 
         if (text.length < 1) {
             vscode.window.showErrorMessage('No selected properties.');
@@ -31,14 +49,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         try {
             var getterAndSetter = createGetterAndSetter(text);
-
-            editor.edit(
-                edit => editor.selections.forEach(
-                    selection => {
-                        edit.insert(selection.end, getterAndSetter);
-                    }
-                )
-            );
+            editor.edit(e => e.insert(selections[selections.length - 1].end, getterAndSetter));
         }
         catch (error) {
             console.log(error);
