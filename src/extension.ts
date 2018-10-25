@@ -128,13 +128,13 @@ function createGetterAndSetter(textProperties: string) {
 
             let code =
                 `
-\tpublic ${(type === "Boolean" || type === "boolean" ? "is" : "get")}${Attribute}(): ${type} {
-\t\treturn this.${attribute};
-\t}
+    public ${(type === "Boolean" || type === "boolean" ? "is" : "get")}${Attribute}(): ${type} {
+        return this.${attribute};
+    }
 
-\tpublic set${Attribute}(${attribute}: ${type}): void {
-\t\tthis.${attribute} = ${attribute};
-\t}
+    public set${Attribute}(${attribute}: ${type}): void {
+        this.${attribute} = ${attribute};
+    }
 `;
             generatedCode += code;
         }
