@@ -126,8 +126,7 @@ function createGetterAndSetter(textProperties: string) {
 
         if (create) {
 
-            let code =
-                `
+            let code = `
     public ${(type === "Boolean" || type === "boolean" ? "is" : "get")}${Attribute}(): ${type} {
         return this.${attribute};
     }
