@@ -75,7 +75,7 @@ function createGetterAndSetter(textProperties: string) {
     }
 
     let generatedCode = `
-    `;
+`;
     for (let p in properties) {
         while (properties[p].startsWith(" ")) { properties[p] = properties[p].substr(1); }
         while (properties[p].startsWith("\t")) { properties[p] = properties[p].substr(1); }
@@ -133,7 +133,8 @@ function createGetterAndSetter(textProperties: string) {
 
     public set${Attribute}(${attribute}: ${type}): void {
         this.${attribute} = ${attribute};
-    }`;
+    }
+`;
             generatedCode += code;
         }
     }
