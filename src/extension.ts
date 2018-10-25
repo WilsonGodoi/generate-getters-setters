@@ -133,8 +133,7 @@ function createGetterAndSetter(textProperties: string) {
 
     public set${Attribute}(${attribute}: ${type}): void {
         this.${attribute} = ${attribute};
-    }
-`;
+    }`;
             generatedCode += code;
         }
     }
