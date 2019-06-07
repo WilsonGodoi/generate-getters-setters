@@ -253,7 +253,7 @@ function createGetterAndSetterES6(textProperties: string) {
         return this.${attribute};
     }
 
-    public set ${attribute.replace('_', '')}(${attribute.replace('_', '')}: ${type}): void {
+    public set ${attribute.replace('_', '')}(${attribute.replace('_', '')}: ${type}) {
         this.${attribute} = ${attribute.replace('_', '')};
     }
 `;

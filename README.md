@@ -4,6 +4,8 @@ Generate getters and setters for your Typescript class properties.
 
 ![Demo](images/demo.gif)
 
+Generate getters and setters for your Typescript class properties ES6 pattern.
+
 ## Features
 
 This extension allows you to quickly generate getters and setters with one single command.
@@ -19,9 +21,17 @@ Insert Generate Getters and Setters.
 
 ![Contexttual menu](images/example.png)
 
+Insert Generate Getters and Setters ES6 pattern.
+
+![Contexttual menu](images/example_es6.png)
+
 ## Release Notes
 
 Relevant releases:
+
+### 1.1.6
+
+Generate getters and setters ES6 pattern.
 
 ### 1.1.0
 
