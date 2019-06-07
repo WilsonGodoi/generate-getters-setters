@@ -212,7 +212,7 @@ function createGetterAndSetterES6(textProperties: string) {
                 words.push(row);
             }
         }
-        let type, attribute, Attribute = "";
+        let type, attribute = "";
         let create = false;
 
         // if words === ["private", "name:", "string"];
@@ -220,7 +220,6 @@ function createGetterAndSetterES6(textProperties: string) {
             let attributeArray = words[1].split(":");
             type = words[2];
             attribute = attributeArray[0];
-            Attribute = toCamelCase(attribute);
 
             create = true;
             // if words === ["private", "name:string"];
@@ -228,7 +227,6 @@ function createGetterAndSetterES6(textProperties: string) {
             let array = words[1].split(":");
             type = array[1];
             attribute = array[0];
-            Attribute = toCamelCase(attribute);
             create = true;
             // if words === ["private", "name", ":", "string"];
         } else if (words.length === 4) {
@@ -241,7 +239,6 @@ function createGetterAndSetterES6(textProperties: string) {
             }
             type = array[2].trim();
             attribute = array[1];
-            Attribute = toCamelCase(attribute);
             create = true;
         } else {
             vscode.window.showErrorMessage('Something went wrong! Try that the properties are in this format: "private name: string;"');
@@ -252,12 +249,12 @@ function createGetterAndSetterES6(textProperties: string) {
         if (create) {
 
             let code = `
-    public ${(type === "Boolean" || type === "boolean" ? "is" : "get")}${Attribute}(): ${type} {
+    public get ${attribute.replace('_', '')}(): ${type} {
         return this.${attribute};
     }
 
-    public set${Attribute}(${attribute}: ${type}): void {
-        this.${attribute} = ${attribute};
+    public set ${attribute.replace('_', '')}(${attribute.replace('_', '')}: ${type}): void {
+        this.${attribute} = ${attribute.replace('_', '')};
     }
 `;
             generatedCode += code;
