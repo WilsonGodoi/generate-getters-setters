@@ -29,7 +29,7 @@ Insert Generate Getters and Setters ES6 pattern.
 
 Relevant releases:
 
-### 1.1.6
+### 2.2.0
 
 Generate getters and setters ES6 pattern.
 
