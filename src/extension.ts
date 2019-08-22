@@ -131,7 +131,7 @@ function createGetterAndSetter(textProperties: string) {
         let rows = properties[p].split(" ").map(x => x.replace('\r\n', ''));
         for (let row of rows) {
             if (row.trim() !== '') {
-                words.push(row);
+                words.push(row.replace('\r',''));
             }
         }
         let type, attribute, Attribute = "";
